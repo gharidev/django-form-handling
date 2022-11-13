@@ -1,23 +1,14 @@
 from django import forms
-from core.validators import gmail_validation
 from django.core.exceptions import ValidationError
+from core.models import Contact
 
-class ContactForm(forms.Form):
-    name = forms.CharField(
-        label="Full name",
-        max_length=50,
-        required=False,
-    )
-    email = forms.EmailField(
-        max_length=100,
-        required=False,
-        validators=[gmail_validation]
-    )
-    content = forms.CharField(
-        widget=forms.Textarea(
-            attrs={"rows": 7}
-        )
-    )
+class ContactForm(forms.ModelForm):
+
+    class Meta:
+        model = Contact
+        fields = "__all__"
+        # fields = ["name", "content"]
+        # exclude = ["name"]
 
     def clean(self):
         """

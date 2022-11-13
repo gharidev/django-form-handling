@@ -1,5 +1,5 @@
 from django import forms
-
+from core.validators import gmail_validation
 
 class ContactForm(forms.Form):
     name = forms.CharField(
@@ -9,6 +9,7 @@ class ContactForm(forms.Form):
     email = forms.EmailField(
         max_length=100,
         required=False,
+        validators=[gmail_validation]
     )
     content = forms.CharField(
         widget=forms.Textarea(

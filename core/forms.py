@@ -13,5 +13,6 @@ class ContactForm(forms.Form):
     content = forms.CharField(
         widget=forms.Textarea(
             attrs={"rows": 7}
-        )
+        ),
+        initial="This is a feedback message."
     )

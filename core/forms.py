@@ -18,6 +18,7 @@ class ContactForm(forms.Form):
             attrs={"rows": 7}
         )
     )
+    attachment = forms.FileField()
 
     def clean(self):
         """

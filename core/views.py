@@ -11,7 +11,7 @@ class ContactView(View):
         return render(request, "core/contact.html", {"form": form})
     
     def post(self, request):
-        form = ContactForm(request.POST) # Bound Instantiation
+        form = ContactForm(request.POST, request.FILES) # Bound Instantiation
         if form.is_valid():
             instance = form.save()
             return render(request, "core/success.html", {"data": instance})
@@ -30,7 +30,7 @@ class ContactUpdateView(View):
         return render(request, "core/contact.html", {"form": form})
     
     def post(self, request, id):
-        form = ContactForm(request.POST, instance=Contact.objects.get(id=id))
+        form = ContactForm(request.POST, request.FILES, instance=Contact.objects.get(id=id))
         if form.is_valid():
             instance = form.save()
             return redirect("list-contact")

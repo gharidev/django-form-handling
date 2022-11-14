@@ -5,6 +5,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Content</th>
+            <th>Attachment</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -15,6 +16,7 @@
             <td>{{ contact.name }}</td>
             <td>{{ contact.email }}</td>
             <td>{{ contact.content }}</td>
+            <td>{{ contact.attachment.name|default:"-" }}</td>
             <td><a href="{% url 'update-contact' id=contact.id %}">Edit</a></td>
         </tr>
         {% endfor %}

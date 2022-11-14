@@ -15,3 +15,8 @@ class Contact(models.Model):
         validators=[gmail_validation],
     )
     content = models.TextField()
+    attachment = models.FileField(
+        upload_to="media/",
+        blank=True,
+        null=True,
+    )
